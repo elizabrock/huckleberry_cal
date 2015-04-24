@@ -5,7 +5,59 @@ class TestMonth < Minitest::Test
   def test_initializing_a_month_saves_values
     m = Month.new(05, 2015)
     assert_equal 05, m.month
-    assert_equal 2015, m.year
+    assert_equal 2015, m.year.to_i
+  end
+
+  def test_length_of_january
+    assert_equal 31, Month.new(01, 2021).length
+  end
+
+  def test_length_of_regular_february
+    assert_equal 28, Month.new(02, 1901).length
+  end
+
+  def test_length_of_leap_february
+    assert_equal 29, Month.new(02, 1904).length
+  end
+
+  def test_length_of_march
+    assert_equal 31, Month.new(03, 2021).length
+  end
+
+  def test_length_of_april
+    assert_equal 30, Month.new(04, 2021).length
+  end
+
+  def test_length_of_may
+    assert_equal 31, Month.new(05, 2021).length
+  end
+
+  def test_length_of_june
+    assert_equal 30, Month.new(06, 2021).length
+  end
+
+  def test_length_of_july
+    assert_equal 31, Month.new(07, 2021).length
+  end
+
+  def test_length_of_august
+    assert_equal 31, Month.new(8, 2021).length
+  end
+
+  def test_length_of_september
+    assert_equal 30, Month.new(9, 2021).length
+  end
+
+  def test_length_of_october
+    assert_equal 31, Month.new(10, 2021).length
+  end
+
+  def test_length_of_november
+    assert_equal 30, Month.new(11, 2021).length
+  end
+
+  def test_length_of_december
+    assert_equal 31, Month.new(12, 2021).length
   end
 
   def test_name_for_march

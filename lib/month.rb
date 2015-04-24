@@ -1,3 +1,5 @@
+require_relative 'year'
+
 class Month
   attr_reader :month, :year
 
@@ -6,7 +8,16 @@ class Month
 
   def initialize(month, year)
     @month = month
-    @year = year
+    @year = Year.new(year)
+  end
+
+  LENGTHS = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+  def length
+    if month == 2 && year.leap?
+      LENGTHS[month] + 1
+    else
+      LENGTHS[month]
+    end
   end
 
   def name
