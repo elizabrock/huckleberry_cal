@@ -1,5 +1,8 @@
 class Year
   def initialize(year)
+    if year < 1800 or year > 3000
+      raise ArgumentError, "Year not in valid range"
+    end
     @year = year
   end
 

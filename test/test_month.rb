@@ -8,6 +8,24 @@ class TestMonth < Minitest::Test
     assert_equal 2015, m.year.to_i
   end
 
+  def test_month_doesnt_accept_values_less_than_0
+    assert_raises ArgumentError do
+      Month.new(-1, 2012)
+    end
+    assert_raises ArgumentError do
+      Month.new(0, 2012)
+    end
+  end
+
+  def test_month_doesnt_accept_values_greater_than_12
+    assert_raises ArgumentError do
+      Month.new(13, 2012)
+    end
+    assert_raises ArgumentError do
+      Month.new(125, 2012)
+    end
+  end
+
   def test_length_of_january
     assert_equal 31, Month.new(01, 2021).length
   end

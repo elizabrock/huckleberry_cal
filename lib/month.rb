@@ -11,6 +11,9 @@ class Month
   NAMES = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
   def initialize(month, year)
+    if month < 1 or month > 12
+      raise ArgumentError, "Month not in valid range"
+    end
     @month = month
     @year = Year.new(year)
   end
