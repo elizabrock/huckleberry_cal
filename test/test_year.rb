@@ -19,7 +19,7 @@ class TestYear < Minitest::Test
   end
 
   def test_to_i
-    assert_equal 1909, Year.new(1909).to_s
+    assert_equal 1909, Year.new(1909).to_i
   end
 
   def test_to_s

@@ -12,7 +12,7 @@ class Year
   end
 
   def to_i
-    @year
+    @year.to_i
   end
 
   def to_s
