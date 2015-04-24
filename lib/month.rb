@@ -28,12 +28,12 @@ class Month
   def to_s
     output = "#{name} #{year}".center(LINE_WIDTH).rstrip
     output << "\nSu Mo Tu We Th Fr Sa\n"
-    days_of_month = (1..31).to_a
+    days_of_month = (1..length).to_a
     days_of_month.map!{ |day| day.to_s.rjust(DAY_WIDTH) }
     days_of_month.each_slice(7) do |weekdays|
       output << weekdays.join(" ") + "\n"
     end
-    output << "\n\n"
+    output << "\n"
     output
   end
 end
