@@ -121,7 +121,6 @@ EOS
   end
 
   def test_to_s_on_05_1809
-    skip
     m = Month.new(05, 1809)
     expected = <<EOS
       May 1809

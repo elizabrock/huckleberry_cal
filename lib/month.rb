@@ -1,3 +1,4 @@
+require_relative 'day'
 require_relative 'year'
 
 class Month
@@ -29,6 +30,12 @@ class Month
     output = "#{name} #{year}".center(LINE_WIDTH).rstrip
     output << "\nSu Mo Tu We Th Fr Sa\n"
     days_of_month = (1..length).to_a
+
+    first_of_month = Day.new(month, 1, year.to_i)
+    first_of_month.day_of_week.times do
+      days_of_month.unshift("")
+    end
+
     days_of_month.map!{ |day| day.to_s.rjust(DAY_WIDTH) }
     days_of_month.each_slice(7) do |weekdays|
       output << weekdays.join(" ") + "\n"
