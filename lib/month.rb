@@ -8,6 +8,7 @@ class Month
   LINE_WIDTH = 20
   LENGTHS = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
   HEIGHT = 8
+  WIDTH = 20
   NAMES = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
   def initialize(month, year)

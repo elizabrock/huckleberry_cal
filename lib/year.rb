@@ -1,6 +1,7 @@
 require_relative 'month'
 
 class Year
+  MONTH_PAD = "  "
   WIDTH = 63
 
   def initialize(year)
@@ -26,7 +27,12 @@ class Year
     output = @year.to_s.center(WIDTH).rstrip
     output << "\n"
     output << "\n"
-    output << Month.new(1, @year).to_s
+
+    all_months = (1..12).map{ |n| Month.new(n, @year) }
+    4.times do
+      months = all_months.shift(3)
+      output << months.map{ |m| m.name.center(Month::WIDTH) }.join(MONTH_PAD).rstrip + "\n"
+    end
     output
   end
 end
