@@ -24,6 +24,7 @@ class Year
   end
 
   def to_s
+    # Year Header
     output = @year.to_s.center(WIDTH).rstrip
     output << "\n"
     output << "\n"
@@ -31,7 +32,17 @@ class Year
     all_months = (1..12).map{ |n| Month.new(n, @year) }
     4.times do
       months = all_months.shift(3)
+      month_arrays = months.map{ |m| m.to_s.split("\n") }
+      # Month Header
       output << months.map{ |m| m.name.center(Month::WIDTH) }.join(MONTH_PAD).rstrip + "\n"
+      month_arrays.map{ |m_array| m_array.shift } #Skip the built-in month headings
+
+      # Month Bodies
+      (Month::HEIGHT - 1).times do
+        # Print the next line of the months
+        next_lines = month_arrays.map{ |m_array| m_array.shift || "" }
+        output << next_lines.map{ |line| line.ljust(Month::WIDTH) }.join(MONTH_PAD).rstrip + "\n"
+      end
     end
     output
   end
