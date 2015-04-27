@@ -9,7 +9,7 @@ EOS
   end
 
   def test_basic_year
-    output = `./cal.rb 2012`
+    output = `./cal.rb 2109`
     expected = <<EOS
                              2109
 

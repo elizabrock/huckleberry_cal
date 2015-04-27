@@ -1,4 +1,8 @@
+require_relative 'month'
+
 class Year
+  WIDTH = 63
+
   def initialize(year)
     if year < 1800 or year > 3000
       raise ArgumentError, "Year not in valid range"
@@ -19,6 +23,10 @@ class Year
   end
 
   def to_s
-    @year.to_s
+    output = @year.to_s.center(WIDTH).rstrip
+    output << "\n"
+    output << "\n"
+    output << Month.new(1, @year).to_s
+    output
   end
 end

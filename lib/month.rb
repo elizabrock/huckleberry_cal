@@ -31,7 +31,7 @@ class Month
   end
 
   def to_s
-    output = "#{name} #{year}".center(LINE_WIDTH).rstrip
+    output = "#{name} #{year.to_i}".center(LINE_WIDTH).rstrip
     output << "\nSu Mo Tu We Th Fr Sa\n"
     number_of_lines = 2
 
