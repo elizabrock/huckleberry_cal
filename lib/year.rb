@@ -1,7 +1,9 @@
 require_relative 'month'
 
 class Year
+  COLS = 3
   MONTH_PAD = "  "
+  ROWS = 4
   WIDTH = 63
 
   def initialize(year)
@@ -30,12 +32,12 @@ class Year
     output << "\n"
 
     all_months = (1..12).map{ |n| Month.new(n, @year) }
-    4.times do
-      months = all_months.shift(3)
+    ROWS.times do
+      months = all_months.shift(COLS)
       month_arrays = months.map{ |m| m.to_s.split("\n") }
       # Month Header
-      output << months.map{ |m| m.name.center(Month::WIDTH) }.join(MONTH_PAD).rstrip + "\n"
       month_arrays.map{ |m_array| m_array.shift } #Skip the built-in month headings
+      output << months.map{ |m| m.name.center(Month::WIDTH) }.join(MONTH_PAD).rstrip + "\n"
 
       # Month Bodies
       (Month::HEIGHT - 1).times do
