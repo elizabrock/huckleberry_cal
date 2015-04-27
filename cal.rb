@@ -2,12 +2,17 @@
 
 require_relative 'lib/month'
 
-month = ARGV[0].to_i
-year = ARGV[1].to_i
+month = ARGV.first.to_i
+year = ARGV.last.to_i
 
 begin
-  m = Month.new(month, year)
-  puts m.to_s
+  if ARGV.length == 1
+    y = Year.new(year)
+    puts y.to_s
+  else
+    m = Month.new(month, year)
+    puts m.to_s
+  end
 rescue ArgumentError
   puts "Date not in acceptable format/range."
   puts "./cal.rb [month] [year]"
